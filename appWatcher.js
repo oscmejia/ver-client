@@ -48,7 +48,7 @@ if(G.settings.path2){
           console.log('All key words found, calling parseBill function');
           var url = G.settings.ip_address+':'+G.settings.port+'/parseBill';
           WebServices.doRequest(url, data, function(response) {
-
+            console.log(response);
           });
         }else{
           console.log('Keyword  Vendedor search result: '+(data.search('Vendedor')));
