@@ -1,5 +1,9 @@
 var fs = require('fs');
 var chokidar = require('chokidar');
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var errorhandler = require('errorhandler');
+var express = require('express');
 
 G = {};
 G.path = __dirname;
@@ -48,7 +52,7 @@ if(G.settings.path2){
           console.log('All key words found, calling parseBill function');
           var url = G.settings.ip_address+':'+G.settings.port+'/parseBill';
           WebServices.doRequest(url, data, function(response) {
-
+            console.log(response);
           });
         }else{
           console.log('Keyword  Vendedor search result: '+(data.search('Vendedor')));
@@ -60,3 +64,25 @@ if(G.settings.path2){
     });
   });
 }
+
+var app = express();
+// Controllers
+var frontController = require(G.path+'/layers/controllers/FrontController').create();
+
+app.use(bodyParser.urlencoded({
+  limit: '50mb',
+  extended: true
+}))
+app.use(bodyParser.json({
+  limit: '50mb',
+  extended: true
+}));
+
+app.use(morgan('dev'));
+//  before doing so, check that we are in dev
+app.use(errorhandler());
+
+app.post('/print', frontController.print);
+
+console.log('Sever is runing');
+app.listen(3030);
