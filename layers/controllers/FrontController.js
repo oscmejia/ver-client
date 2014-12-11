@@ -3,7 +3,7 @@ var fs = require('fs');
 
 FrontController.prototype.print = function(req, res) {
   var data      = req.body.data;
-  var path      = '';
+  var path      = G.path+'/temp/';
   var printName = req.body.printD+'.txt';
   var filename  = path+printName;
   fs.writeFile(filename, data, function (err) {
@@ -12,7 +12,7 @@ FrontController.prototype.print = function(req, res) {
   });
   var printer = require ('printer-lp');
   var options = {
-    destination: 'EPSON_SX510',
+    destination: G.settings.printer_name,
   };
   var jobFile = printer.printFile(filename, options, 'Impresion '+ printName);
   var onJobEnd = function () {
