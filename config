@@ -3,5 +3,6 @@
   "port": "8080",
   "path1": "/Users/station14/Documents/Test",
   "path2": "",
-  "useFs": false
+  "printer_name": "",
+  "useFs": true
 }
