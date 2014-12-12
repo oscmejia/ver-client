@@ -59,6 +59,8 @@ app.use(morgan('dev'));
 //  before doing so, check that we are in dev
 app.use(errorhandler());
 
+app.get('/getPrintData', frontController.getPrintData);
+
 app.post('/print', frontController.print);
 
 console.log('Sever is runing');
