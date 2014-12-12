@@ -4,5 +4,5 @@
   "path1": "/Users/station14/Documents/Test",
   "path2": "",
   "printer_name": "",
-  "useFs": false
+  "useFs": true
 }
