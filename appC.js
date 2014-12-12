@@ -42,39 +42,16 @@ if(G.settings.path1){
   });
 }
 
-if(G.settings.path2){
-  chokidar.watch(G.settings.path2, {ignored: /[\/\\]\./, persistent: true, useFsEvents: G.settings.useFs, ignoreInitial: true}).on('add', function(path) {
-    console.log('Add file event detected on folder 2: '+path);
-    fs.readFile(path, "utf8", function (err, data) {
-      if(data){
-        console.log('File contains data, checking keywords');
-        if((data.search('Vendedor') !== -1) && (data.search('FACTURA') !== -1) && (data.search('T O T A L') !== -1) && (data.search('Fecha') !== -1)){
-          console.log('All key words found, calling parseBill function');
-          var url = G.settings.ip_address+':'+G.settings.port+'/parseBill';
-          WebServices.doRequest(url, data, function(response) {
-            console.log(response);
-          });
-        }else{
-          console.log('Keyword  Vendedor search result: '+(data.search('Vendedor')));
-          console.log('Keyword  FACTURA search result: '+(data.search('FACTURA')));
-          console.log('Keyword  T O T A L search result: '+(data.search('T O T A L')));
-          console.log('Keyword  Fecha search result: '+(data.search('Fecha')));
-        }
-      }
-    });
-  });
-}
-
 var app = express();
 // Controllers
 var frontController = require(G.path+'/layers/controllers/FrontController').create();
 
 app.use(bodyParser.urlencoded({
-  limit: '50mb',
+  limit: '100kb',
   extended: true
 }))
 app.use(bodyParser.json({
-  limit: '50mb',
+  limit: '100kb',
   extended: true
 }));
 
