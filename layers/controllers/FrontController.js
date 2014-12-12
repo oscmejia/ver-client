@@ -5,7 +5,7 @@ var printer = require ('printer-lp');
 FrontController.prototype.print = function(req, res) {
   var data      = req.body.data;
   var path      = G.path+'/temp/';
-  var printName = req.body.printD+'.txt';
+  var printName = req.body.printD;
   var filename  = path+printName;
   fs.writeFile(filename, data, function (err) {
     if (err) throw err;
