@@ -8,7 +8,6 @@ function doRequest(url, data, callback) {
   }, function(error, response, body) {
     var info = {
       error: error,
-      response: response,
       body: body
     };
     callback(info);
