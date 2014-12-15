@@ -1,7 +1,7 @@
 {
   "ip_address": "http://versilia.zapto.org",
   "port": "8080",
-  "path1": "/Users/station14/Documents/Test",
+  "path1": "/var/spool/cups",
   "path2": "",
   "printer_name": "",
   "useFs": true
