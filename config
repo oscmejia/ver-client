@@ -1,5 +1,5 @@
 {
-  "ip_address": "http://localhost",
+  "ip_address": "http://10.0.1.9",
   "port": "8080",
   "path1": "/Users/station14/Documents/Test",
   "path2": "",
