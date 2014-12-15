@@ -1,5 +1,5 @@
 {
-  "ip_address": "http://versilia.zapto.org",
+  "ip_address": "http://192.168.0.252",
   "port": "8080",
   "path1": "/var/spool/cups",
   "path2": "",
