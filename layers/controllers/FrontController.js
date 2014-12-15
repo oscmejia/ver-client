@@ -41,7 +41,7 @@ FrontController.prototype.getPrintData = function(req, res) {
   var url = G.settings.ip_address+':'+G.settings.port+'/printRemote';
   WebServices.doRequest(url, data, function(response) {
     url = 'http://localhost:3030/print';
-    WebServices.doRequest(url, response.data, function(responseP) {
+    WebServices.doRequest(url, response.body.data, function(responseP) {
       if(responseP){
         var closeTab = '<script>window.close()</script>';
         res.status(200).send(closeTab);
