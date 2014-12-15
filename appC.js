@@ -24,7 +24,9 @@ if(G.settings.path1){
     console.log('Add file event detected on folder 1: '+path);
     fs.readFile(path, "utf8", function (err, data) {
       if(data){
-        console.log('File contains data, checking keywords');
+        console.log('File Content:\n');
+        console.log(data);
+        console.log('\n\nFile contains data, checking keywords');
         if((data.search('Vendedor') !== -1) && (data.search('FACTURA') !== -1) && (data.search('T O T A L') !== -1) && (data.search('Fecha') !== -1)){
           console.log('All key words found, calling parseBill function');
           var url = G.settings.ip_address+':'+G.settings.port+'/parseBill';
