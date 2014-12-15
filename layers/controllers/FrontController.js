@@ -13,7 +13,7 @@ FrontController.prototype.print = function(req, res) {
     console.log('It\'s saved!');
 
     var options = {
-      destination: G.settings.printer_name,
+      // destination: G.settings.printer_name,
     };
     var jobFile = printer.printFile(filename, options, 'Impresion '+ printName);
 
