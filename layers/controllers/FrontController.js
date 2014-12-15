@@ -5,7 +5,6 @@ var WebServices = require(G.path+'/js/webServices');
 
 FrontController.prototype.print = function(req, res) {
   var data      = req.body.data;
-  console.log(data);
   var path      = G.path+'/temp/';
   var printName = data.printD;
   var filename  = path+printName;
