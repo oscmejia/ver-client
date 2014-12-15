@@ -6,7 +6,12 @@ function doRequest(url, data, callback) {
     json: true,
     body : {data : data}
   }, function(error, response, body) {
-    callback(body);
+    var info = {
+      error: error,
+      response: response,
+      body: body
+    };
+    callback(info);
   });
 }
 
