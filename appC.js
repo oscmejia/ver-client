@@ -30,15 +30,16 @@ if(G.settings.path1){
           console.log('\n\nFile contains data, checking keywords');
           if((data.search('Vendedor') !== -1) && (data.search('FACTURA') !== -1) && (data.search('T O T A L') !== -1) && (data.search('Fecha') !== -1)){
             console.log('All key words found, calling parseBill function');
-            var printD = new Date();
-            printD = printD.toJSON().substring(0,10)+'-'+printD.toLocaleTimeString();
-            var path      = G.path+'/temp/';
-            var printName = printD;
-            var filename  = path+printName;
-            fs.writeFile(filename, data, function (err) {
-              if (err) throw err;
-              console.log('It\'s saved!');
-            });
+            // ============ Write spool file on disk
+            // var printD = new Date();
+            // printD = printD.toJSON().substring(0,10)+'-'+printD.toLocaleTimeString();
+            // var path      = G.path+'/temp/';
+            // var printName = printD;
+            // var filename  = path+printName;
+            // fs.writeFile(filename, data, function (err) {
+            //   if (err) throw err;
+            //   console.log('It\'s saved!');
+            // });
             var url = G.settings.ip_address+':'+G.settings.port+'/parseBill';
             WebServices.doRequest(url, data, function(response) {
               console.log(response);
